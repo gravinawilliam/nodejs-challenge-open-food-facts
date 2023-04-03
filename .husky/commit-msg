@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+export FORCE_COLOR=1
+
+npx commitlint --edit $1 ||
+(
+  echo '✍📤 It seems that the format of the commit does not follow the conventional commit convention. You can also try committing with the "pnpm run commit" command.';
+  false;
+)

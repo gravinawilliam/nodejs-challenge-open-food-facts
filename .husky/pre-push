@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+export FORCE_COLOR=1
+
+npm run check:format ||
+(
+  echo '💀❌ Ooops! Prettier checking process has failed!';
+  false;
+)
+
+npm run check:lint ||
+(
+  echo '💀❌ Ooops! Eslint checking process has failed!';
+  false;
+)
+
+npm run check:spelling ||
+(
+  echo '💀❌ Ooops! Cspell checking process has failed!';
+  false;
+)
+
+npm run check:types ||
+(
+  echo '💀❌ Ooops! Types checking process has failed!';
+  false;
+)
+
+npm run test:coverage ||
+(
+  echo '💀❌ Ooops! Test has failed!';
+  false;
+)
+
+echo '🥳✅ Successfully completed!'
