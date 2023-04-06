@@ -6,6 +6,6 @@ import { adapterRoute } from '@main/frameworks/express/adapters/express-router.a
 
 const router: Router = Router();
 
-router.post('/', adapterRoute({ controller: makeHealthCheckController(), validation: undefined }));
+router.get('/', adapterRoute({ controller: makeHealthCheckController(), validation: undefined }));
 
 export default router;
