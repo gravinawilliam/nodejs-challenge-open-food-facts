@@ -2,7 +2,13 @@
 
 ## Como executar o projeto
 
-Rode os seguintes comandos
+1 - Adicione um arquivo .env na raiz do projeto com a seguinte variável de ambiente
+
+```
+  MONGODB_DATABASE_URL = "mongodb+srv://<user>:<password>@<cluster>/<database>?retryWrites=true&w=majority"
+```
+
+2 - Rode os seguintes comandos
 
 ```shell
   npm install
