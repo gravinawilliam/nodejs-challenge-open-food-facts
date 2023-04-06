@@ -4,7 +4,6 @@ import { makeCronImportNewProductsUseCase } from '@factories/use-cases/products/
 
 export const importNewProductsCron = async (): Promise<void> => {
   cron.schedule('*/10 * * * *', async () => {
-    console.log('Cron importNewProductsCron started');
     await makeCronImportNewProductsUseCase().execute(undefined);
   });
 };
