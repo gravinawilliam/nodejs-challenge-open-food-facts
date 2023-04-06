@@ -33,7 +33,8 @@
     "**/fixtures/**",
     "**/public/**",
     "CHANGELOG.md",
-    "**/changelog.mdx"
+    "**/changelog.mdx",
+    "README.md"
   ],
   "dictionaries": [
     "typescript",
