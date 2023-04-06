@@ -136,7 +136,6 @@ export class ProductsPrismaRepository
         where: { code: parameters.code }
       });
 
-
       if (found === null) return success({ product: undefined });
 
       const productStatus = selectProductStatus(found.status);
