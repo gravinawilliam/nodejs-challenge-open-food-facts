@@ -1,5 +1,23 @@
 # NodeJs Challenge 20201030
 
+## Como executar o projeto
+
+Rode os seguintes comandos
+
+```shell
+  npm install
+  npm run build
+  npm run start:prod
+```
+
+As rotas são essas:
+
+- `GET /`: Rota de Healthcheck
+- `PUT /products/:code`: Update do produto
+- `DELETE /products/:code`: Faz um soft delete no produto
+- `GET /products/:code`: Pega as informações somente de um produto da base de dados
+- `GET /products`: Listar todos os produtos da base de dados e ten paginação para não sobrecarregar o request.
+
 ## Introdução
 
 Nesse desafio trabalharemos no desenvolvimento de uma REST API para utilizar os dados do projeto Open Food Facts, que é um banco de dados aberto com informação nutricional de diversos produtos alimentícios.
