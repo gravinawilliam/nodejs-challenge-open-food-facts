@@ -23,7 +23,6 @@
       "@use-cases/*": ["src/domain/use-cases/*"],
       "@value-objects/*": ["src/domain/entities/value-objects/*"],
       "@domain/*": ["src/domain/*"],
-      "@external/*": ["src/infrastructure/*"],
       "@infrastructure/*": ["src/infrastructure/*"],
       "@factories/*": ["src/main/factories/*"],
       "@main/*": ["src/main/*"],

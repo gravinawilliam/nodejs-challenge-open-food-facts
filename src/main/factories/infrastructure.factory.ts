@@ -1,10 +1,10 @@
-import { prisma } from '@external/database/prisma/prisma';
+import { prisma } from '@infrastructure/database/prisma/prisma';
 
 import { makeLoggerProvider } from './providers/logger-provider.factory';
 
-export const makeInfrastructure = () => {
+export const makeInfrastructure = async () => {
   const logger = makeLoggerProvider();
-  prisma
+  await prisma
     .$connect()
     // eslint-disable-next-line promise/always-return
     .then(() => {

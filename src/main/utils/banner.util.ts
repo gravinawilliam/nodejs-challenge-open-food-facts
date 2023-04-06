@@ -1,7 +1,7 @@
 import endent from 'endent';
 import figlet from 'figlet';
 
-import { GLOBAL_CONFIG } from '@external/configs/infrastructure.config';
+import { GLOBAL_CONFIG } from '@infrastructure/configs/infrastructure.config';
 
 import { makeLoggerProvider } from '@factories/providers/logger-provider.factory';
 

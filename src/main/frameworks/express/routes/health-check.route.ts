@@ -1,13 +1,11 @@
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
 
-import { HttpStatusCode } from '@main/utils/http-status-code.util';
+import { makeHealthCheckController } from '@factories/controllers/health-check/health-check-controller.factory';
+
+import { adapterRoute } from '@main/frameworks/express/adapters/express-router.adapter';
 
 const router: Router = Router();
 
-router.get('/', (_request: Request, response: Response) => {
-  response.status(HttpStatusCode.OK).json({
-    message: '🚀 To infinity and beyond!'
-  });
-});
+router.post('/', adapterRoute({ controller: makeHealthCheckController(), validation: undefined }));
 
 export default router;

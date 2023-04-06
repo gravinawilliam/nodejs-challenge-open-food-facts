@@ -3,18 +3,57 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("POSTGRES_DATABASE_URL")
+  provider = "mongodb"
+  url      = env("MONGODB_DATABASE_URL")
 }
 
-model UsersTable {
-  email    String @unique @db.VarChar()
-  password String @db.VarChar()
+enum ProductStatus {
+  draft
+  trash
+  published
+}
 
-  id        String    @id @unique @db.VarChar()
-  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz()
-  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
-  deletedAt DateTime? @map("deleted_at") @db.Timestamptz()
+model ProductsImportHistory {
+  isSuccess                Boolean @map("is_success")
+  runtimeInMilliseconds    Float   @map("runtime_in_milliseconds")
+  quantityImportedProducts Int     @map("quantity_imported_products")
 
-  @@map("users")
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@map("products_import_history")
+}
+
+model Products {
+  code            String   @unique @map("code")
+  status          String   @map("status")
+  importedT       DateTime @map("imported_t")
+  url             String   @map("url")
+  creator         String   @map("creator")
+  name            String   @map("name")
+  quantity        String   @map("quantity")
+  brands          String   @map("brands")
+  categories      String   @map("categories")
+  labels          String   @map("labels")
+  cities          String   @map("cities")
+  purchasePlaces  String   @map("purchase_places")
+  stores          String   @map("stores")
+  ingredientsText String   @map("ingredients_text")
+  traces          String   @map("traces")
+  servingSize     String   @map("serving_size")
+  servingQuantity String   @map("serving_quantity")
+  nutriscoreScore String   @map("nutriscore_score")
+  nutriscoreGrade String   @map("nutriscore_grade")
+  mainCategory    String   @map("main_category")
+  imageUrl        String   @map("image_url")
+  lastModifiedT   String   @map("last_modified_t")
+
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@map("products")
 }

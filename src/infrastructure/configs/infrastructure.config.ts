@@ -1,7 +1,7 @@
 import {
   getEnvironmentNumber,
   getEnvironmentString
-} from '@external/providers/get-envs/dot-environment.get-environments-provider';
+} from '@infrastructure/providers/get-envs/dot-environment.get-environments-provider';
 
 enum NODE_ENV {
   DEVELOPMENT = 'DEVELOPMENT',

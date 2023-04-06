@@ -1,3 +1,7 @@
+import { StatusError } from '@errors/_shared/status-error';
+
+import { StatusSuccess } from '@main/controllers/_shared/controller';
+
 export enum HttpStatusCode {
   CONTINUE = 100,
   SWITCHING_PROTOCOLS = 101,
@@ -46,3 +50,32 @@ export enum HttpStatusCode {
   GATEWAY_TIMEOUT = 504,
   HTTP_VERSION_NOT_SUPPORTED = 505
 }
+
+export const selectStatusCode = (parameters: { status: StatusError | StatusSuccess }): HttpStatusCode => {
+  switch (parameters.status) {
+    case StatusError.CONFLICT: {
+      return HttpStatusCode.CONFLICT;
+    }
+    case StatusError.INVALID: {
+      return HttpStatusCode.BAD_REQUEST;
+    }
+    case StatusError.NOT_FOUND: {
+      return HttpStatusCode.NOT_FOUND;
+    }
+    case StatusError.PROVIDER_ERROR: {
+      return HttpStatusCode.INTERNAL_SERVER_ERROR;
+    }
+    case StatusError.REPOSITORY_ERROR: {
+      return HttpStatusCode.INTERNAL_SERVER_ERROR;
+    }
+    case StatusSuccess.CREATED: {
+      return HttpStatusCode.CREATED;
+    }
+    case StatusSuccess.DONE: {
+      return HttpStatusCode.OK;
+    }
+    default: {
+      return HttpStatusCode.INTERNAL_SERVER_ERROR;
+    }
+  }
+};

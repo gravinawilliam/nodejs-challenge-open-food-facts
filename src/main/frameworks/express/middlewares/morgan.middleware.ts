@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 import morgan, { StreamOptions } from 'morgan';
 
-import { GLOBAL_CONFIG } from '@external/configs/infrastructure.config';
+import { GLOBAL_CONFIG } from '@infrastructure/configs/infrastructure.config';
 
 import { makeLoggerProvider } from '@main/factories/providers/logger-provider.factory';
 

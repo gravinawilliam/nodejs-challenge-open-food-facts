@@ -15,6 +15,10 @@ import {
   ISendLogInfoLoggerProvider,
   SendLogInfoLoggerProviderDTO
 } from '@contracts/providers/logger/send-log-info-logger.provider';
+import {
+  ISendLogTimeUseCaseLoggerProvider,
+  SendLogTimeUseCaseLoggerProviderDTO
+} from '@contracts/providers/logger/send-log-time-use-case.logger-provider';
 
 enum LevelName {
   SILLY = 'silly',
@@ -67,7 +71,11 @@ const CONSOLE_FORMAT = format.combine(
 );
 
 export class WinstonLoggerProvider
-  implements ISendLogErrorLoggerProvider, ISendLogInfoLoggerProvider, ISendLogHttpLoggerProvider
+  implements
+    ISendLogErrorLoggerProvider,
+    ISendLogInfoLoggerProvider,
+    ISendLogHttpLoggerProvider,
+    ISendLogTimeUseCaseLoggerProvider
 {
   private readonly level: string = this.environment.IS_DEVELOPMENT ? LevelName.DEBUG : LevelName.INFO;
 
@@ -82,6 +90,12 @@ export class WinstonLoggerProvider
     }
   ) {
     this.logger = this.configureAndGetLogger();
+  }
+
+  public sendLogTimeUseCase(
+    parameters: SendLogTimeUseCaseLoggerProviderDTO.Parameters
+  ): SendLogTimeUseCaseLoggerProviderDTO.Result {
+    this.logger.info(`${emoji.get('clock1')} ${this.getValue(parameters.message)}`);
   }
 
   public sendLogInfo(parameters: SendLogInfoLoggerProviderDTO.Parameters): SendLogInfoLoggerProviderDTO.Result {

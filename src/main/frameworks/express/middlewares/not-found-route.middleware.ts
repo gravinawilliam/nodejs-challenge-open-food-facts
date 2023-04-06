@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 import emoji from 'node-emoji';
 
-import { GLOBAL_CONFIG } from '@external/configs/infrastructure.config';
+import { GLOBAL_CONFIG } from '@infrastructure/configs/infrastructure.config';
 
 import { HttpStatusCode } from '@main/utils/http-status-code.util';
 
